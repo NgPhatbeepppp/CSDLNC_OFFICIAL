@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "25060664728",
+    "project_id": "dacsdlnc-1",
+    "storage_bucket": "dacsdlnc-1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:25060664728:android:8695c8914bda2f27cd37ed",
+        "android_client_info": {
+          "package_name": "com.example.dacsdlnc_1"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDzmvvSy5EX4jT76EihODt1gBPG9fq4RcI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
