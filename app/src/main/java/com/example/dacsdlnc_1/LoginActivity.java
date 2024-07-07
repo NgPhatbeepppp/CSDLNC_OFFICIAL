@@ -46,6 +46,7 @@ public class LoginActivity extends AppCompatActivity {
             Toast.makeText(this, "PassWord needs 6 letters", Toast.LENGTH_SHORT).show();
             return;
         }
+        startActivity(new Intent(LoginActivity.this, MainActivity.class));
         auth.signInWithEmailAndPassword(userEmail, userPassword).addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {

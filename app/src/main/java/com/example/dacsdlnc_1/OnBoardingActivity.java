@@ -14,6 +14,8 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.dacsdlnc_1.adapters.SliderAdapter;
+
 public class OnBoardingActivity extends AppCompatActivity {
 
     ViewPager viewPager;

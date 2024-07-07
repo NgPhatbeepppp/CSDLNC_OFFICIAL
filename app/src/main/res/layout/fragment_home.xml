@@ -15,14 +15,12 @@
         android:orientation="vertical">
 
 
-        <com.smarteist.autoimageslider.ImgeSilder
+        <com.denzcoskun.imageslider.ImageSlider
             android:id="@+id/image_slider"
             android:layout_width="match_parent"
-            android:layout_height="220dp"
-            app:iss_auto_cycle="true"
-            app:iss_delay="0"
-            app:iss_period="1000"
-            tools:ignore="MissingClass" />
+            android:layout_height="200dp"
+            app:iss_auto_cycle="true" />
+
 
 
         <LinearLayout

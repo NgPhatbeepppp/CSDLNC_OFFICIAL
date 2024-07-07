@@ -2,6 +2,7 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/CSDL_NC_3" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/CSDL_NC_OFF" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/DACSDLNC_1-master" vcs="Git" />
   </component>
 </project>

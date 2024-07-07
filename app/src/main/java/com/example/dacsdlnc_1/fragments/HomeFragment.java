@@ -61,13 +61,12 @@ public class HomeFragment extends Fragment {
         popularRecyclerview = root.findViewById(R.id.popular_rec);
 
         db = FirebaseFirestore.getInstance();
-        // Initialize SliderView for image slider
         ImageSlider imageSlider = root.findViewById(R.id.image_slider);
-        List<SlideModel> slideModels = new ArrayList<>();
 
-        slideModels.add(new SlideModel(R.drawable.banner1,"Discount On Shoes Items", ScaleTypes.CENTER_CROP));
-        slideModels.add(new SlideModel(R.drawable.banner2,"Discount On Perfume", ScaleTypes.CENTER_CROP));
-        slideModels.add(new SlideModel(R.drawable.banner3,"70% OFF", ScaleTypes.CENTER_CROP));
+        List<SlideModel> slideModels = new ArrayList<>();
+        slideModels.add(new SlideModel(R.drawable.banner1, "Discount On Shoes Items", ScaleTypes.CENTER_CROP));
+        slideModels.add(new SlideModel(R.drawable.banner2, "Discount On Perfume", ScaleTypes.CENTER_CROP));
+        slideModels.add(new SlideModel(R.drawable.banner3, "70% OFF", ScaleTypes.CENTER_CROP));
 
         imageSlider.setImageList(slideModels);
 
@@ -103,13 +102,6 @@ public class HomeFragment extends Fragment {
         newProductsModelList = new ArrayList<>();
         newProductsAdapter = new NewProductsAdapter(getContext(),newProductsModelList);
         newProductRecyclerview.setAdapter(newProductsAdapter);
-
-        // Category
-        catRecyclerview.setLayoutManager(new LinearLayoutManager(getActivity(),RecyclerView.HORIZONTAL,false));
-        categoryModelList = new ArrayList<>();
-        categoryAdapter = new CategoryAdapter(getActivity(), categoryModelList);
-        catRecyclerview.setAdapter(categoryAdapter);
-
         // data
         db.collection("NewProducts") // ten bang trong filebase
                 .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
