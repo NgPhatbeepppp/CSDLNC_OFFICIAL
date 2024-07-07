@@ -1,8 +1,10 @@
 package com.example.dacsdlnc_1;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -27,12 +29,21 @@ public class RegistrationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
 
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.hide();
+        }
         auth = FirebaseAuth.getInstance();
+        if (auth.getCurrentUser() != null)
+        {
+            startActivity(new Intent(RegistrationActivity.this, MainActivity.class));
+            finish();
+        }
         name = findViewById(R.id.edt_name);
         email = findViewById(R.id.edt_email);
         password = findViewById(R.id.edt_password);
 
-        sharedPreferences = getSharedPreferences("OnboardingScreen",MODE_PRIVATE);
+        sharedPreferences = getSharedPreferences("onboardingScreen",MODE_PRIVATE);
 
         boolean isFirstTime = sharedPreferences.getBoolean("firstTime",true);
 
@@ -56,7 +67,7 @@ public class RegistrationActivity extends AppCompatActivity {
             return;
         }
         if (TextUtils.isEmpty(userEmail)){
-            Toast.makeText(this, "Enter User Email", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Enter Email", Toast.LENGTH_SHORT).show();
             return;
         }
         if (TextUtils.isEmpty(userPassword)){
@@ -65,19 +76,20 @@ public class RegistrationActivity extends AppCompatActivity {
         }
         if (userPassword.length() <6)
         {
-            Toast.makeText(this, "PassWord needs 6 letters", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "PassWord too short, enter minimum 6 letters", Toast.LENGTH_SHORT).show();
             return;
         }
+        //startActivity(new Intent(RegistrationActivity.this, MainActivity.class));
         auth.createUserWithEmailAndPassword(userEmail,userPassword).addOnCompleteListener(RegistrationActivity.this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
 
                 if (task.isSuccessful()){
                     Toast.makeText(RegistrationActivity.this, "Successfully Register", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(RegistrationActivity.this,MainActivity.class));
+                    startActivity(new Intent(RegistrationActivity.this, MainActivity.class));
                 }
                 else {
-                    Toast.makeText(RegistrationActivity.this, "Failed"+task.getException(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegistrationActivity.this, "Registration Failed"+task.getException(), Toast.LENGTH_SHORT).show();
                 }
             }
         });
